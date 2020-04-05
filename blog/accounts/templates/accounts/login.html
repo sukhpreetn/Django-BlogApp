@@ -1,0 +1,12 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+    <h1>Login</h1>
+    <form class="site-form" action method="Post">
+        {% csrf_token ß%}
+        {{form}}
+        {% if request.GET.next %}
+            <input type ="hidden" name="next" value="{{request.GET.next}}">
+        {% endif %}
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}

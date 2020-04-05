@@ -1,0 +1,16 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+    {% for post in posts %}
+
+        <div class="post">
+              <div class="date">
+                  Posted {{ post.published_date }} by {{ post.author }}
+              </div>
+            <h2><a href="{% url 'blogs:post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+    {% include "blogs/pagination.html" with page=posts %}
+
+{% endblock %}
